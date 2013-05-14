@@ -13,6 +13,14 @@ group :assets do
 	gem 'coffee-rails', '~> 4.0.0'
 end
 
+group :test, :development do 
+  gem 'rspec-rails', "~> 2.12"
+end
+
+group :test do 
+  gem 'capybara', "2.0.2"
+end
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
