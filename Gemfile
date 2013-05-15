@@ -19,6 +19,7 @@ end
 
 group :test do 
   gem 'capybara', "2.0.2"
+  gem 'therubyracer'
 end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
