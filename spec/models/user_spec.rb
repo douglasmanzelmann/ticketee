@@ -32,11 +32,11 @@ describe User do
                              password_confirmation: "password") }
 
     it "authenticates with a correct password" do 
-      expect(user.authenticate("password")).to be_valid
+      expect(user.authenticate("password")).to be
     end
 
     it "does not authenticate with an incorrect password" do 
-      expect(user.authenticate("password1")).to_not be_true
+      expect(user.authenticate("password1")).to_not be
     end
   end
 end
