@@ -2,11 +2,23 @@ require 'spec_helper'
 
 feature "Creating Tickets" do 
   before do 
-    FactoryGirl.create(:project, name: "Internet Explorer")
+    project = FactoryGirl.create(:project, name: "Internet Explorer")
+    user = FactoryGirl.create(:user)
 
     visit '/'
-    click_link "Internet Explorer"
+    click_link project.name
     click_link "New Ticket"
+    message = "You need to sign in or sign up before continuing."
+    expect(page).to have_content(message)
+
+    fill_in "Username", with: user.name
+    fill_in "Password", with: user.password 
+    click_button "Sign in"
+
+    visit '/'
+    click_link project.name
+    click_link "New Ticket"
+    within("h2") { expect(page).to have_content("New Ticket") }
   end
 
   scenario "Creating a ticket" do 
@@ -15,6 +27,9 @@ feature "Creating Tickets" do
     click_button 'Create Ticket'
 
     expect(page).to have_content("Ticket has been created.")
+    within "#ticket #author" do 
+      expect(page).to have_content("Created by example@user.com")
+    end
   end
 
   scenario "Creating a ticket without valid attributes fails" do 

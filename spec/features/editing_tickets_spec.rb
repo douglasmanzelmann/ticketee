@@ -2,11 +2,17 @@ require 'spec_helper'
 
 feature "Editing Tickets" do 
   let!(:project) { FactoryGirl.create(:project, name: "Sublime Text 2") }
-  let!(:ticket) { FactoryGirl.create(:ticket, project: project,
-                        title: "I love poop",
-                        description: "It makes me feel good") }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:ticket) do 
+    ticket = FactoryGirl.create(:ticket, project: project,
+                                title: "I love poop",
+                                description: "It makes me feel good")
+    ticket.update(user: user)
+    ticket
+  end
 
-  before do 
+  before do
+    sign_in_as!(user) 
     visit '/'
     click_link 'Sublime Text 2'
     click_link 'I love poop'
