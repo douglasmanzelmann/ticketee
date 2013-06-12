@@ -11,9 +11,19 @@ feature "Creating Users" do
     click_link 'New User'
   end
 
-  scenario 'with valid information' do 
-    fill_in 'Email', with: 'user@user.com'
+  scenario 'a regular user' do 
+    fill_in 'Email', with: 'user@u:er.com'
     fill_in 'user_password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+    click_button 'Create User'
+    expect(page).to have_content("User has been created.")
+  end
+
+  scenario 'an admin user' do 
+    fill_in 'Email', with: 'admin@user.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+    check 'Is an admin?'
     click_button 'Create User'
     expect(page).to have_content("User has been created.")
   end
