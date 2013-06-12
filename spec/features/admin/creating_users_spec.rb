@@ -16,6 +16,7 @@ feature "Creating Users" do
     fill_in 'user_password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
     click_button 'Create User'
+    
     expect(page).to have_content("User has been created.")
   end
 
@@ -25,6 +26,10 @@ feature "Creating Users" do
     fill_in 'Password confirmation', with: 'password'
     check 'Is an admin?'
     click_button 'Create User'
+    
     expect(page).to have_content("User has been created.")
+    within("#users") do 
+      expect(page).to have_content("admin@user.com (Admin)")
+    end
   end
 end
