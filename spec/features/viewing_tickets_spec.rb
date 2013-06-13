@@ -3,7 +3,9 @@ require 'spec_helper'
 feature 'Viewing Tickets' do 
   before do 
     user = FactoryGirl.create(:user)
+    sign_in_as!(user)
     sublime_text_2 = FactoryGirl.create(:project, name: "Sublime Text 2")
+    define_permission!(user, "view", sublime_text_2)
 
     ticket = FactoryGirl.create(:ticket, project: sublime_text_2,
                         title: "Make it shiny!",

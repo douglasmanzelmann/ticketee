@@ -4,9 +4,7 @@ describe ProjectsController do
   let(:user) { FactoryGirl.create(:user) } 
 
   context "standard users" do 
-    before do 
-      sign_in(user)
-    end
+    before(:each) { sign_in(user) }
 
     { new: :get,
       create: :post,
@@ -20,5 +18,15 @@ describe ProjectsController do
           expect(flash[:alert]).to eql("You must be an admin to do that.")
         end
       end
+    end
+
+    it "cannot access the show action without permission" do
+      sign_in(user) 
+      project = FactoryGirl.create(:project)
+      get :show, id: project.id
+
+      expect(response).to redirect_to(projects_path)
+      expect(flash[:alert]).to eql("The project you were looking for " + 
+                                   "could not be found.")
     end
 end
