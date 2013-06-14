@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save 
+    if @user.save
+      session[:user_id] = @user.id 
       flash[:notice] = "You have signed up successfully."
       redirect_to projects_path
     else
