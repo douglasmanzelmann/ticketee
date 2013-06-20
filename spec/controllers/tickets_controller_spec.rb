@@ -30,7 +30,7 @@ describe TicketsController do
     end
 
     it "cannot begin to create a ticket" do 
-      get :new, project_id: project.id 
+      get :new, project_id: project.id
       cannot_create_tickets!
     end
 
