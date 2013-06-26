@@ -11,7 +11,7 @@ feature "Creating Tickets" do
 
     visit '/'
     click_link project.name
-    click_link "New Ticket"    
+    click_link "New Ticket"
     within("h2") { expect(page).to have_content("New Ticket") }
   end
 

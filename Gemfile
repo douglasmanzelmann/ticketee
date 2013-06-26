@@ -22,6 +22,7 @@ group :test do
   gem 'factory_girl_rails', '4.2.1'
   gem 'factory_girl', '4.2.0'
   gem 'therubyracer'
+  gem 'launchy'
 end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
