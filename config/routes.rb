@@ -9,6 +9,9 @@ Ticketee::Application.routes.draw do
     root to: "base#index" 
     resources :users do 
       resources :permissions
+
+      put "permissions", to: "permissions#set",
+                         as: "set_permissions"
     end
   end
 
