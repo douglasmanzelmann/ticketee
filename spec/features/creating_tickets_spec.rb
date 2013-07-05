@@ -52,7 +52,7 @@ feature "Creating Tickets" do
     expect(page).to have_content("Ticket has been created")
 
     within("#ticket .asset") do 
-      expect(page).to have_content("speec.txt")
+      expect(page).to have_content("speed.txt")
     end
   end
 end
