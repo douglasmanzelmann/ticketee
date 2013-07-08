@@ -13,8 +13,8 @@
 
   <%= simple_format(@ticket.description) %>
 
-  <% if @ticket.asset.present? %>
-    <h3>Attached File</h3>
+  <% if @ticket.assets.present? %>
+    <h3>Attached Files</h3>
     <div class="asset">
       <p>
         <%= link_to File.basename(@ticket.asset.path), @ticket.asset.url %>
