@@ -86,7 +86,7 @@ private
 
   def ticket_params
     params.require(:ticket).permit(:title, :description, 
-                            assets_atrributes: [:asset])
+                            assets_attributes: [:asset])
   end
 
 end
