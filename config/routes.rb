@@ -15,6 +15,8 @@ Ticketee::Application.routes.draw do
     end
   end
 
+  resources :files
+
   resources :users
 
   get "/signin", to: "sessions#new", as: "signin"
