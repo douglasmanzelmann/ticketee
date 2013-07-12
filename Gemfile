@@ -21,12 +21,12 @@ group :test do
   gem 'capybara', "2.0.2"
   gem 'factory_girl_rails', '4.2.1'
   gem 'factory_girl', '4.2.0'
-  gem 'therubyracer'
   gem 'launchy'
+  gem 'database_cleaner', '1.0.1'
 end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
